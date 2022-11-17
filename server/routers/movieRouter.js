@@ -1,0 +1,78 @@
+const express = require('express')
+const router = express.Router();
+const MovieBL = require('../models/Movie/movieBL')
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
+
+
+router.route('/')
+    .get( async function(req,resp)
+    {
+        const token = req.headers['x-access-token'];
+        if (!token) {
+            return resp.status(401).json('No Token Provided');
+          }
+
+          jwt.verify(token, process.env.ACCESS_SECRET_TOKEN, async (err, data) => {
+            if (err) {
+              return resp.status(500).json('Failed to authenticate token');
+            }
+            else
+            {
+                if(req.query != null && req.query.name != null)
+            {
+                let name = req.query.name;
+                data =  await MovieBL.getMovieByName(name);
+                return resp.json(data)
+            }
+
+            else
+            {
+                let data =  await MovieBL.getAllMovies();
+                return resp.json(data)
+            } 
+
+            }
+
+
+            
+        });
+    })
+
+router.route('/:id')
+    .get( async function(req,resp)
+    {
+        let id = req.params.id;
+        let data = await MovieBL.getMovie(id);
+        return resp.json(data);    
+    })
+
+router.route('/')
+    .post( async function(req,resp)
+    {
+        let obj = req.body;
+        let status = await MovieBL.addMovie(obj);
+        return resp.json(status);    
+    })
+
+router.route('/:id')
+    .put( async function(req,resp)
+    {
+        let obj = req.body;
+        let id = req.params.id;
+
+        let status = await MovieBL.updateMovie(id,obj);
+        return resp.json(status);    
+    })
+
+router.route('/:id')
+    .delete( async function(req,resp)
+    {
+        let id = req.params.id;
+
+        let status = await MovieBL.deleteMovie(id);
+        return resp.json(status);    
+    })
+
+
+module.exports = router;
