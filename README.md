@@ -1,5 +1,6 @@
 # MoviesSubscriptions
 A Web application for Movies & Subscription management, using MERN Stack.
+
 The Front End layer is implemented with React and the Back End with Node.JS - Express.
 The data is stored in a MongoDB Database, using mongoose.
 
