@@ -1,18 +1,18 @@
 # MoviesSubscriptions
-A Web application for Movies & Subscription management, using MERN Stack.
 
-The Frontend layer is implemented with React and the Back End with Node.JS - Express.
-The data is stored in a MongoDB Database, using mongoose.
+> A Web application platform built with the MERN stack.
 
-First, this website is managed by a user login system using Jason Web Token. Thus, only existing users could access the site and the subscriptions information.
+This is a Web application for Movies & Subscription management. 
 
-Secondly, this website contain different operations and options in order to make movie subscriptions easier, Such as:
+![screenshot](https://github.com/StavIsraeli/MoviesSubscriptions/blob/master/movies%20subscriptions%20web.png)
 
-- Presents the information about all the movies and their current subscriptions. 
-- Presents all the necessary information about the system's members.
-- Adding, deleting, updating or editing options for each movie, memeber or subscription.
-- Search bar for searching movies by name. 
+## Features
 
-You are more then welcome to check out all of that and more, by yourself!
-
-
+- Login system for users.
+- Present, create, edit and delete movies and their subscriptions
+- Movie search feature
+- Subscriber profile with his movies
+- Subscriptions page dor manage all the members and their movies subscriptions
+- Present, create, edit and delete Members
+- “Watched Movies” section for every member - list of links to the movies the member watched, and the date he watched them.
+- Subscribing a member to a new movie - drop down with all the movies that has not watched yet, and a date for watching it.
